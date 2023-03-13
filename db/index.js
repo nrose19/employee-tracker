@@ -30,6 +30,12 @@ class DB {
             "SELECT roles.id, roles.title, department.name AS department, roles.salary FROM roles left join department ON roles.department_id = department.id;"
         )
     };
+    addRole(role){
+        return this.connection.promise().query(
+            "INSERT INTO roles SET ?", 
+            role
+        )
+    };
 }
 
 export default new DB(connection);
